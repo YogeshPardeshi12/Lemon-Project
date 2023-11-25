@@ -1,0 +1,80 @@
+﻿@model Lemon_Task.Models.Fruits_Table
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .main {
+        background-color: lavenderblush;
+        padding: 50px;
+    }
+
+    .top {
+        padding-left: 320px;
+    }
+</style>
+<h2>Insert</h2>
+<div class="main text-white">
+    <div class="top">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Fruits Table </h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label>Fruit Name</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Fruit_Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Fruit_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <lable>Vegitable Name</lable>
+                    <div class="col-md-10">
+                        @Html.DropDownList("veg_Id", null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Veg_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <lable>Start Date</lable>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Start_Date, new { @class = "from-control", type = "date" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <lable>Is Active</lable>
+                    <input type="checkbox" checked="@(1==0)" />
+                    <div class="col-md-10">
+                    </div>
+                </div>
+
+                <br />
+                <div class="form-group">
+
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" value="SAVE" class="btn btn-danger">SAVE</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="85975c7a98c3480eaa53bc5781cb10bb" Name="Diagram1">
+        <EntityTypeShape EntityType="Lemon_Technology_TaskModel.Common_Fruit_Veg_Table" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Lemon_Technology_TaskModel.Fruits_Table" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Lemon_Technology_TaskModel.Vegetables_Table" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Lemon_Technology_TaskModel.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="Lemon_Technology_TaskModel.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1" ManuallyRouted="false" />
+        <AssociationConnector Association="Lemon_Technology_TaskModel.FK_Fruits_Table_Fruits_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="Lemon_Technology_TaskModel.FK_Vegetables_Table_Vegetables_Table" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

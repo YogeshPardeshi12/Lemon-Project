@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Lemon_Technology_TaskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Common_Fruit_Veg_Table">
+          <Key>
+            <PropertyRef Name="Fruit_Veg_Id" />
+          </Key>
+          <Property Name="Fruit_Veg_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fruit_id" Type="int" />
+          <Property Name="Veg_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Fruits_Table">
+          <Key>
+            <PropertyRef Name="Fruit_id" />
+          </Key>
+          <Property Name="Fruit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fruit_Name" Type="nvarchar(max)" />
+          <Property Name="Veg_id" Type="int" />
+          <Property Name="Start_Date" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vegetables_Table">
+          <Key>
+            <PropertyRef Name="Veg_id" />
+          </Key>
+          <Property Name="Veg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Veg_Name" Type="nvarchar(max)" />
+          <Property Name="Fruit_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table">
+          <End Role="Common_Fruit_Veg_Table" Type="Self.Common_Fruit_Veg_Table" Multiplicity="0..1" />
+          <End Role="Common_Fruit_Veg_Table1" Type="Self.Common_Fruit_Veg_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Common_Fruit_Veg_Table">
+              <PropertyRef Name="Fruit_Veg_Id" />
+            </Principal>
+            <Dependent Role="Common_Fruit_Veg_Table1">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1">
+          <End Role="Common_Fruit_Veg_Table" Type="Self.Common_Fruit_Veg_Table" Multiplicity="0..1" />
+          <End Role="Common_Fruit_Veg_Table1" Type="Self.Common_Fruit_Veg_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Common_Fruit_Veg_Table">
+              <PropertyRef Name="Fruit_Veg_Id" />
+            </Principal>
+            <Dependent Role="Common_Fruit_Veg_Table1">
+              <PropertyRef Name="Veg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fruits_Table_Fruits_Table">
+          <End Role="Fruits_Table" Type="Self.Fruits_Table" Multiplicity="0..1" />
+          <End Role="Fruits_Table1" Type="Self.Fruits_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fruits_Table">
+              <PropertyRef Name="Fruit_id" />
+            </Principal>
+            <Dependent Role="Fruits_Table1">
+              <PropertyRef Name="Veg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vegetables_Table_Vegetables_Table">
+          <End Role="Vegetables_Table" Type="Self.Vegetables_Table" Multiplicity="0..1" />
+          <End Role="Vegetables_Table1" Type="Self.Vegetables_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vegetables_Table">
+              <PropertyRef Name="Veg_id" />
+            </Principal>
+            <Dependent Role="Vegetables_Table1">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Lemon_Technology_TaskModelStoreContainer">
+          <EntitySet Name="Common_Fruit_Veg_Table" EntityType="Self.Common_Fruit_Veg_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fruits_Table" EntityType="Self.Fruits_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vegetables_Table" EntityType="Self.Vegetables_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table" Association="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table">
+            <End Role="Common_Fruit_Veg_Table" EntitySet="Common_Fruit_Veg_Table" />
+            <End Role="Common_Fruit_Veg_Table1" EntitySet="Common_Fruit_Veg_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1" Association="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1">
+            <End Role="Common_Fruit_Veg_Table" EntitySet="Common_Fruit_Veg_Table" />
+            <End Role="Common_Fruit_Veg_Table1" EntitySet="Common_Fruit_Veg_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fruits_Table_Fruits_Table" Association="Self.FK_Fruits_Table_Fruits_Table">
+            <End Role="Fruits_Table" EntitySet="Fruits_Table" />
+            <End Role="Fruits_Table1" EntitySet="Fruits_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vegetables_Table_Vegetables_Table" Association="Self.FK_Vegetables_Table_Vegetables_Table">
+            <End Role="Vegetables_Table" EntitySet="Vegetables_Table" />
+            <End Role="Vegetables_Table1" EntitySet="Vegetables_Table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Lemon_Technology_TaskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Common_Fruit_Veg_Table">
+          <Key>
+            <PropertyRef Name="Fruit_Veg_Id" />
+          </Key>
+          <Property Name="Fruit_Veg_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fruit_id" Type="Int32" />
+          <Property Name="Veg_id" Type="Int32" />
+          <NavigationProperty Name="Common_Fruit_Veg_Table1" Relationship="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table" FromRole="Common_Fruit_Veg_Table" ToRole="Common_Fruit_Veg_Table1" />
+          <NavigationProperty Name="Common_Fruit_Veg_Table2" Relationship="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table" FromRole="Common_Fruit_Veg_Table1" ToRole="Common_Fruit_Veg_Table" />
+          <NavigationProperty Name="Common_Fruit_Veg_Table11" Relationship="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1" FromRole="Common_Fruit_Veg_Table" ToRole="Common_Fruit_Veg_Table1" />
+          <NavigationProperty Name="Common_Fruit_Veg_Table3" Relationship="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1" FromRole="Common_Fruit_Veg_Table1" ToRole="Common_Fruit_Veg_Table" />
+        </EntityType>
+        <EntityType Name="Fruits_Table">
+          <Key>
+            <PropertyRef Name="Fruit_id" />
+          </Key>
+          <Property Name="Fruit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fruit_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Veg_id" Type="Int32" />
+          <Property Name="Start_Date" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Fruits_Table1" Relationship="Self.FK_Fruits_Table_Fruits_Table" FromRole="Fruits_Table" ToRole="Fruits_Table1" />
+          <NavigationProperty Name="Fruits_Table2" Relationship="Self.FK_Fruits_Table_Fruits_Table" FromRole="Fruits_Table1" ToRole="Fruits_Table" />
+        </EntityType>
+        <EntityType Name="Vegetables_Table">
+          <Key>
+            <PropertyRef Name="Veg_id" />
+          </Key>
+          <Property Name="Veg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Veg_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fruit_id" Type="Int32" />
+          <NavigationProperty Name="Vegetables_Table1" Relationship="Self.FK_Vegetables_Table_Vegetables_Table" FromRole="Vegetables_Table" ToRole="Vegetables_Table1" />
+          <NavigationProperty Name="Vegetables_Table2" Relationship="Self.FK_Vegetables_Table_Vegetables_Table" FromRole="Vegetables_Table1" ToRole="Vegetables_Table" />
+        </EntityType>
+        <Association Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table">
+          <End Role="Common_Fruit_Veg_Table" Type="Self.Common_Fruit_Veg_Table" Multiplicity="0..1" />
+          <End Role="Common_Fruit_Veg_Table1" Type="Self.Common_Fruit_Veg_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Common_Fruit_Veg_Table">
+              <PropertyRef Name="Fruit_Veg_Id" />
+            </Principal>
+            <Dependent Role="Common_Fruit_Veg_Table1">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1">
+          <End Role="Common_Fruit_Veg_Table" Type="Self.Common_Fruit_Veg_Table" Multiplicity="0..1" />
+          <End Role="Common_Fruit_Veg_Table1" Type="Self.Common_Fruit_Veg_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Common_Fruit_Veg_Table">
+              <PropertyRef Name="Fruit_Veg_Id" />
+            </Principal>
+            <Dependent Role="Common_Fruit_Veg_Table1">
+              <PropertyRef Name="Veg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fruits_Table_Fruits_Table">
+          <End Role="Fruits_Table" Type="Self.Fruits_Table" Multiplicity="0..1" />
+          <End Role="Fruits_Table1" Type="Self.Fruits_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fruits_Table">
+              <PropertyRef Name="Fruit_id" />
+            </Principal>
+            <Dependent Role="Fruits_Table1">
+              <PropertyRef Name="Veg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vegetables_Table_Vegetables_Table">
+          <End Role="Vegetables_Table" Type="Self.Vegetables_Table" Multiplicity="0..1" />
+          <End Role="Vegetables_Table1" Type="Self.Vegetables_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vegetables_Table">
+              <PropertyRef Name="Veg_id" />
+            </Principal>
+            <Dependent Role="Vegetables_Table1">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Yogesh_Entity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Common_Fruit_Veg_Table" EntityType="Self.Common_Fruit_Veg_Table" />
+          <EntitySet Name="Fruits_Table" EntityType="Self.Fruits_Table" />
+          <EntitySet Name="Vegetables_Table" EntityType="Self.Vegetables_Table" />
+          <AssociationSet Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table" Association="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table">
+            <End Role="Common_Fruit_Veg_Table" EntitySet="Common_Fruit_Veg_Table" />
+            <End Role="Common_Fruit_Veg_Table1" EntitySet="Common_Fruit_Veg_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1" Association="Self.FK_Common_Fruit_Veg_Table_Common_Fruit_Veg_Table1">
+            <End Role="Common_Fruit_Veg_Table" EntitySet="Common_Fruit_Veg_Table" />
+            <End Role="Common_Fruit_Veg_Table1" EntitySet="Common_Fruit_Veg_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fruits_Table_Fruits_Table" Association="Self.FK_Fruits_Table_Fruits_Table">
+            <End Role="Fruits_Table" EntitySet="Fruits_Table" />
+            <End Role="Fruits_Table1" EntitySet="Fruits_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vegetables_Table_Vegetables_Table" Association="Self.FK_Vegetables_Table_Vegetables_Table">
+            <End Role="Vegetables_Table" EntitySet="Vegetables_Table" />
+            <End Role="Vegetables_Table1" EntitySet="Vegetables_Table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Lemon_Technology_TaskModelStoreContainer" CdmEntityContainer="Yogesh_Entity">
+          <EntitySetMapping Name="Common_Fruit_Veg_Table">
+            <EntityTypeMapping TypeName="Lemon_Technology_TaskModel.Common_Fruit_Veg_Table">
+              <MappingFragment StoreEntitySet="Common_Fruit_Veg_Table">
+                <ScalarProperty Name="Fruit_Veg_Id" ColumnName="Fruit_Veg_Id" />
+                <ScalarProperty Name="Fruit_id" ColumnName="Fruit_id" />
+                <ScalarProperty Name="Veg_id" ColumnName="Veg_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fruits_Table">
+            <EntityTypeMapping TypeName="Lemon_Technology_TaskModel.Fruits_Table">
+              <MappingFragment StoreEntitySet="Fruits_Table">
+                <ScalarProperty Name="Fruit_id" ColumnName="Fruit_id" />
+                <ScalarProperty Name="Fruit_Name" ColumnName="Fruit_Name" />
+                <ScalarProperty Name="Veg_id" ColumnName="Veg_id" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vegetables_Table">
+            <EntityTypeMapping TypeName="Lemon_Technology_TaskModel.Vegetables_Table">
+              <MappingFragment StoreEntitySet="Vegetables_Table">
+                <ScalarProperty Name="Veg_id" ColumnName="Veg_id" />
+                <ScalarProperty Name="Veg_Name" ColumnName="Veg_Name" />
+                <ScalarProperty Name="Fruit_id" ColumnName="Fruit_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
